@@ -12,7 +12,9 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -79,18 +81,22 @@ public class Fichero {
     
      public static void escribirString(Map<String,Integer> lista) {
 
-        String[] array = lista.toArray(new String[lista.size() - 1]);
-
-        for (int i = 0; i < array.length; i++) {
+     List<Integer> listaValores = new ArrayList<>(lista.values());
+     List<String> listaKeys= new ArrayList(lista.keySet());
+     
+       
+      for (int i = 0; i < listaKeys.size(); i++) {
 
             try {
-                Files.write(Paths.get("contadorgeneros.csv"), (array[i] + "\n").getBytes(StandardCharsets.UTF_8),
+                Files.write(Paths.get("contadorGeneros.txt"), (listaKeys.get(i) + "," + listaValores.get(i)+"\n" ).getBytes(StandardCharsets.UTF_8),
                         StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             } catch (IOException ex) {
                 System.out.println("Error creando el fichero");
             }
 
         }
+       
+     
 
     }
 

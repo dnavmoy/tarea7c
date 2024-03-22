@@ -33,6 +33,11 @@ public class Tarea7cDanielNavarro {
         }
        
         Fichero.escribirString(setGenero);
+        
+        Map<String,Integer> mapa = contadorGeneros(lista);
+        
+        mapa.forEach((k,v)-> System.out.println(k +"," +  v));
+        Fichero.escribirString(mapa);
     }
     
     public static Set<String> conjuntoPersonas(List<Personas> listasPersonas){
@@ -62,7 +67,7 @@ public class Tarea7cDanielNavarro {
            
        }
        
-       
+     return mapa;  
    }
    
     
